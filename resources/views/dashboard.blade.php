@@ -442,7 +442,7 @@
 
         <section class="welcome">
             <div>
-                <h2>¡Bienvenida a VetCare! 🩷</h2>
+                <h2>¡Bienvenido a VetCare! 🩷</h2>
                 <p>
                     Administra las mascotas, consulta sus historiales
                     y mantén organizada la información de tus pacientes.
