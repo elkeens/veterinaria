@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mascota;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+
 
 class MascotaController extends Controller
 {
@@ -83,5 +85,23 @@ class MascotaController extends Controller
         return redirect()
             ->route('mascotas.index')
             ->with('success', 'La mascota se eliminó correctamente.');
+    }
+
+    public function expedientePdf(Mascota $mascota)
+    {
+    $mascota->load([
+        'consultas' => function ($query) {
+            $query->orderByDesc('fecha');
+        }
+    ]);
+
+    $pdf = Pdf::loadView(
+        'mascotas.expediente-pdf',
+        compact('mascota')
+    )->setPaper('a4', 'portrait');
+
+    return $pdf->download(
+        'expediente-mascota-' . $mascota->id . '.pdf'
+    );
     }
 }

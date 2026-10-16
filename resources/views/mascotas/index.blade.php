@@ -234,6 +234,7 @@
                class="button button-pink">
                 + Registrar mascota
             </a>
+            
         </header>
 
         @if (session('success'))
@@ -332,6 +333,11 @@
                                                     class="delete-button">
                                                 Eliminar
                                             </button>
+                                            <a href="{{ route('mascotas.expediente.pdf', $mascota) }}"
+                                                class="button button-blue"
+                                                target="_blank">
+                                            PDF
+                                            </a>
                                         </form>
                                     </div>
                                 </td>

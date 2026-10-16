@@ -11,3 +11,8 @@ Route::get('/', [DashboardController::class, 'index'])
 Route::resource('mascotas', MascotaController::class);
 
 Route::resource('consultas', ConsultaController::class);
+
+Route::get(
+    '/mascotas/{mascota}/expediente-pdf',
+    [MascotaController::class, 'expedientePdf']
+)->name('mascotas.expediente.pdf');

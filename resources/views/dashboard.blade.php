@@ -412,7 +412,7 @@
                 <span class="emoji">🐶</span> Mascotas
             </a>
 
-            <a href="#">
+            <a href="{{ route('consultas.index') }}" class="active">
                 <span class="emoji">📅</span> Consultas
             </a>
         </nav>
