@@ -147,6 +147,28 @@
             .container { padding: 18px; }
             h1 { font-size: 23px; }
         }
+
+        .pdf-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background-color: #e53935;
+            color: #ffffff;
+            border: 1px solid #c62828;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+
+        .pdf-button:hover {
+            background-color: #c62828;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -239,6 +261,15 @@
                                         @method('DELETE')
                                         <button type="submit" class="delete">Eliminar</button>
                                     </form>
+
+                                    <a
+                                        href="{{ route('consultas.pdf', $consulta) }}"
+                                        class="pdf-button"
+                                        target="_blank"
+                                    >
+                                    PDF
+                                    </a>
+
                                 </div>
                             </td>
                         </tr>

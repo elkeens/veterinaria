@@ -252,7 +252,7 @@
                     type="search"
                     name="buscar"
                     value="{{ $buscar }}"
-                    placeholder="Buscar por mascota, dueño o raza..."
+                    placeholder="Buscar por mascota, dueño, raza o teléfono..."
                 >
 
                 <button class="button button-blue" type="submit">
@@ -333,12 +333,8 @@
                                                     class="delete-button">
                                                 Eliminar
                                             </button>
-                                            <a href="{{ route('mascotas.expediente.pdf', $mascota) }}"
-                                                class="button button-blue"
-                                                target="_blank">
-                                            PDF
-                                            </a>
                                         </form>
+                                        
                                     </div>
                                 </td>
                             </tr>

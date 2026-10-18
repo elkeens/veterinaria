@@ -18,7 +18,9 @@ class MascotaController extends Controller
                 $query->where(function ($subquery) use ($buscar) {
                     $subquery->where('nombre', 'like', "%{$buscar}%")
                         ->orWhere('dueno', 'like', "%{$buscar}%")
-                        ->orWhere('raza', 'like', "%{$buscar}%");
+                        ->orWhere('raza', 'like', "%{$buscar}%")
+                        ->orWhere('telefono_dueno', 'like', "%{$buscar}%")
+                        ->orWhere('telefono_dueno_secundario', 'like', "%{$buscar}%");
                 });
             })
             ->orderBy('nombre')
@@ -39,6 +41,8 @@ class MascotaController extends Controller
             'nombre' => 'required|string|max:255',
             'dueno' => 'required|string|max:255',
             'telefono_dueno' => 'nullable|string|max:20',
+            'telefono_dueno_secundario' => 'nullable|string|max:20',
+            'ubicacion' => 'nullable|string|max:1000',
             'especie' => 'required|string|max:50',
             'raza' => 'nullable|string|max:255',
             'edad' => 'nullable|integer|min:0|max:150',
@@ -64,6 +68,8 @@ class MascotaController extends Controller
             'nombre' => 'required|string|max:255',
             'dueno' => 'required|string|max:255',
             'telefono_dueno' => 'nullable|string|max:20',
+            'telefono_dueno_secundario' => 'nullable|string|max:20',
+            'ubicacion' => 'nullable|string|max:1000',
             'especie' => 'required|string|max:50',
             'raza' => 'nullable|string|max:255',
             'edad' => 'nullable|integer|min:0|max:150',

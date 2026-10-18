@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Consulta;
 use App\Models\Mascota;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ConsultaController extends Controller
@@ -90,5 +91,19 @@ class ConsultaController extends Controller
         return redirect()
             ->route('consultas.index')
             ->with('success', 'La consulta se eliminó correctamente.');
+    }
+
+    public function consultaPdf(Consulta $consulta)
+    {
+    $consulta->load('mascota');
+
+    $pdf = Pdf::loadView(
+        'consultas.consulta-pdf',
+        compact('consulta')
+    )->setPaper('a4', 'portrait');
+
+    return $pdf->download(
+        'consulta-' . $consulta->id . '.pdf'
+    );
     }
 }

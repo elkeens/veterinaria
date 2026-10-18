@@ -11,6 +11,8 @@ class Mascota extends Model
         'nombre',
         'dueno',
         'telefono_dueno',
+        'telefono_dueno_secundario',
+        'ubicacion',
         'especie',
         'raza',
         'edad',

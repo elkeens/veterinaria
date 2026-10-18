@@ -16,3 +16,8 @@ Route::get(
     '/mascotas/{mascota}/expediente-pdf',
     [MascotaController::class, 'expedientePdf']
 )->name('mascotas.expediente.pdf');
+
+Route::get(
+    '/consultas/{consulta}/pdf',
+    [ConsultaController::class, 'consultaPdf']
+)->name('consultas.pdf');

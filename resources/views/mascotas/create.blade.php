@@ -410,6 +410,40 @@
                         @enderror
                     </div>
 
+                    <div class="field">
+                        <label for="telefono_dueno_secundario">
+                        Teléfono adicional (opcional)
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefono_dueno_secundario"
+                            name="telefono_dueno_secundario"
+                            value="{{ old('telefono_dueno_secundario') }}"
+                            placeholder="Ej. 3312345678"
+                            maxlength="20"
+                            >
+
+                            @error('telefono_dueno_secundario')
+                            <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="field full">
+                            <label for="ubicacion">Ubicación</label>
+
+                            <textarea
+                                id="ubicacion"
+                                name="ubicacion"
+                                maxlength="1000"
+                                placeholder="Calle, colonia, ciudad..."
+                                >{{ old('ubicacion') }}</textarea>
+
+                                @error('ubicacion')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                     <div class="field full">
                         <label for="observaciones">Observaciones</label>
                         <textarea
