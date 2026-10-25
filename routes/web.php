@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\VeterinarioController;
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
@@ -21,3 +22,5 @@ Route::get(
     '/consultas/{consulta}/pdf',
     [ConsultaController::class, 'consultaPdf']
 )->name('consultas.pdf');
+
+Route::resource('veterinarios', VeterinarioController::class);

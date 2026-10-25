@@ -35,8 +35,9 @@ class ConsultaController extends Controller
     public function create()
     {
         $mascotas = Mascota::orderBy('nombre')->get();
+        $veterinarios = \App\Models\Veterinario::orderBy('nombre')->get();
 
-        return view('consultas.create', compact('mascotas'));
+        return view('consultas.create', compact('mascotas', 'veterinarios'));
     }
 
     public function store(Request $request)
@@ -61,14 +62,20 @@ class ConsultaController extends Controller
     public function edit(Consulta $consulta)
     {
         $mascotas = Mascota::orderBy('nombre')->get();
+        $veterinarios = \App\Models\Veterinario::orderBy('nombre')->get();
 
-        return view('consultas.edit', compact('consulta', 'mascotas'));
+        return view('consultas.edit', compact(
+            'consulta',
+            'mascotas',
+            'veterinarios'
+        ));
     }
 
     public function update(Request $request, Consulta $consulta)
     {
         $datos = $request->validate([
             'mascota_id' => 'required|exists:mascotas,id',
+            'veterinario_id' => 'required|exists:veterinarios,id',
             'fecha' => 'required|date',
             'motivo_consulta' => 'nullable|string|max:5000',
             'diagnostico' => 'nullable|string|max:5000',
@@ -95,15 +102,13 @@ class ConsultaController extends Controller
 
     public function consultaPdf(Consulta $consulta)
     {
-    $consulta->load('mascota');
+        $consulta->load(['mascota', 'veterinario']);
 
-    $pdf = Pdf::loadView(
-        'consultas.consulta-pdf',
-        compact('consulta')
-    )->setPaper('a4', 'portrait');
+        $pdf = Pdf::loadView(
+            'consultas.consulta-pdf',
+            compact('consulta')
+        )->setPaper('a4', 'portrait');
 
-    return $pdf->download(
-        'consulta-' . $consulta->id . '.pdf'
-    );
+        return $pdf->download('consulta-' . $consulta->id . '.pdf');
     }
 }

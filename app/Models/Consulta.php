@@ -9,6 +9,7 @@ class Consulta extends Model
 {
     protected $fillable = [
         'mascota_id',
+        'veterinario_id',
         'fecha',
         'motivo_consulta',
         'diagnostico',
@@ -27,5 +28,10 @@ class Consulta extends Model
     public function mascota(): BelongsTo
     {
         return $this->belongsTo(Mascota::class);
+    }
+
+    public function veterinario(): BelongsTo
+    {
+        return $this->belongsTo(Veterinario::class);
     }
 }

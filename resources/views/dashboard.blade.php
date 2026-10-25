@@ -415,6 +415,10 @@
             <a href="{{ route('consultas.index') }}" class="active">
                 <span class="emoji">📅</span> Consultas
             </a>
+
+            <a href="{{ route('veterinarios.index') }}" class="active">
+                <span class="emoji">👨‍⚕️</span> Veterinarios
+            </a>
         </nav>
 
         <div class="sidebar-note">
